@@ -16,7 +16,7 @@ jobs:
   build:
     <<: *defaults
     environment:
-      - CC_TEST_REPORTER_ID: ec575e5a89dcc9d8fc7f7b4820a5ad29cb300fceadcee1d0c5b6b1468fdb11ec
+      - CC_TEST_REPORTER_ID: 2f10924f577c43293baa40c54faa21eafe0ab719c155a923db72d49690963319
     steps:
       - checkout
 
