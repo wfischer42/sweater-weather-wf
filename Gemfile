@@ -15,6 +15,10 @@ gem 'puma', '~> 3.11'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'fast_jsonapi'
+gem 'faraday'
+gem 'figaro'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -33,7 +37,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'pry'
-  gem 'figaro'
   gem 'simplecov', require: false
   gem 'rspec_junit_formatter'
 end
