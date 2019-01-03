@@ -16,7 +16,7 @@ jobs:
   build:
     <<: *defaults
     environment:
-      - CC_TEST_REPORTER_ID: ec575e5a89dcc9d8fc7f7b4820a5ad29cb300fceadcee1d0c5b6b1468fdb11ec
+      - CC_TEST_REPORTER_ID: 2f10924f577c43293baa40c54faa21eafe0ab719c155a923db72d49690963319
     steps:
       - checkout
 
@@ -58,11 +58,11 @@ jobs:
           name: Run backend tests
           command: |
             bundle exec rspec
-            ./tmp/cc-test-reporter format-coverage -t simplecov -o coverage/.resultset.json
+            ./tmp/cc-test-reporter format-coverage -t simplecov -o coverage/codeclimate.json
       - run:
           name: Upload coverage results to Code Climate
           command: |
-            ./tmp/cc-test-reporter upload-coverage -i coverage/.resultset.json
+            ./tmp/cc-test-reporter upload-coverage -i coverage/codeclimate.json
       - persist_to_workspace:
           root: tmp
           paths:
