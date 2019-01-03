@@ -58,11 +58,11 @@ jobs:
           name: Run backend tests
           command: |
             bundle exec rspec
-            ./tmp/cc-test-reporter format-coverage -t simplecov -o coverage/.resultset.json
+            ./tmp/cc-test-reporter format-coverage -t simplecov
       - run:
           name: Upload coverage results to Code Climate
           command: |
-            ./tmp/cc-test-reporter upload-coverage -i coverage/.resultset.json
+            ./tmp/cc-test-reporter upload-coverage
       - persist_to_workspace:
           root: tmp
           paths:
