@@ -1,0 +1,15 @@
+version: "2"
+plugins:
+  fixme:
+    enabled: true
+    config:
+      strings:
+      - FIXME
+      - BUG
+      - TODO
+      - QUESTION
+      - OPTIMIZE
+      - QUESTION
+      - WARNING
+      - XXX
+      - DEBUG
