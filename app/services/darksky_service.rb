@@ -4,7 +4,7 @@ class DarkskyService
     @lon = location[:lon]
   end
 
-  def self.get_forecast(location)
+  def self.forecast(location)
     service = new(location)
     service.get_forecast
   end
@@ -17,17 +17,13 @@ class DarkskyService
   attr_reader :lat, :lon
 
   def response
-    @response ||= conn.get('') do |req|
-      req.params[''] = lat
-      req.params[''] = lon
+    @response ||= conn.get("#{lat},#{lon}") do |request|
+      request.params["exclude"] = "minutely"
     end
   end
 
   def conn
-    Faraday.new('url') do |faraday|
-      faraday.headers[''] = ENV['DARKSKY_KEY']
-      faraday.adapter Faraday.default_adapter
-    end
+    darksky_path = "https://api.darksky.net/forecast/#{ENV['DARKSKY_KEY']}/"
+    Faraday.new(darksky_path)
   end
-
 end

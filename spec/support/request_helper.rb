@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-module Requests
+module Request
   module JsonHelper
     def json
       JSON.parse(response.body)

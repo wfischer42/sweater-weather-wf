@@ -39,6 +39,9 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov', require: false
   gem 'rspec_junit_formatter'
+  gem 'webmock'
+  gem 'vcr'
+  gem 'shoulda-matchers'
 end
 
 group :development do
