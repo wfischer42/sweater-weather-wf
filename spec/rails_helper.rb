@@ -22,13 +22,13 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |config|
-  config.default_cassette_options = { :record => :new_episodes }
+  config.default_cassette_options = { record: :new_episodes,
+                                      re_record_interval: 1.day }
   config.ignore_localhost = true
   config.allow_http_connections_when_no_cassette = true
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
-  config.filter_sensitive_data("<BING_CLIENT_ID>") { ENV['BING_CLIENT_ID'] }
 end
 
 Shoulda::Matchers.configure do |config|
