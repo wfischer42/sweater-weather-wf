@@ -18,6 +18,10 @@ class Giforecast < SimpleDelegator
     location.id
   end
 
+  def copyrite
+    Date.today.year
+  end
+
   private
   attr_reader :location
 end

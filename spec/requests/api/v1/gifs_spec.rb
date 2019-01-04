@@ -13,5 +13,14 @@ RSpec.describe "Api::V1::Gifs", type: :request do
       expect(json["data"]["type"]).to be_a(String)
       expect(json["data"]["attributes"]).to be_a(Hash)
     end
+
+    describe "response data" do
+      subject(:response_data) { json["data"]["attributes"] }
+      it { is_expected.to include("copyrite", "daily_forecasts") }
+      describe "daily_forecast" do
+        subject(:daily_forecast) { response_data["daily_forecasts"].first }
+        it { is_expected.to include("time", "summary", "url") }
+      end
+    end
   end
 end
