@@ -15,7 +15,7 @@ RSpec.describe "Api::V1::Users", type: :request do
 
     it "generates a valid API key" do
       expect(json["api_key"]).to be_a(String)
-      expect(User.first.valid_key?(json["api_key"])).to be(true)
+      expect(json["api_key"]).to eq(User.first.token())
     end
   end
 end

@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   def create
     user = User.create(new_user_params) if passwords_match?
-    render json: { api_key: user.api_key}
+    render json: { api_key: user.token }
   end
 
   private
