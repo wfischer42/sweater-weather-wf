@@ -18,4 +18,4 @@ Request images related to the upcoming week's daily forecast:
 GET localhost:3000/api/v1/gifs?city=denver&state=co
 ```
 
-User account creation is on it's way!
+User account creation is on it's way
