@@ -1,11 +1,9 @@
 class Api::V1::GifsController < ApplicationController
   def show
-    if location = Location.fetch(location_params)
-      daily_forecasts = Forecast.for_location(location).daily
-      forecast_gifs = Giforecast.for_forecast(daily_forecasts, location)
+    validate :current_location do
+      daily_forecasts = Forecast.for_location(current_location).daily
+      forecast_gifs = Giforecast.for_forecast(daily_forecasts, current_location)
       render json: GiforecastSerializer.new(forecast_gifs)
-    else
-      render json: { message: "Location was not found." }
     end
   end
 end

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::GifsController, type: :controller do
+RSpec.describe Api::V1::FavoritesController, type: :controller do
   # 
-  # describe "GET #show" do
+  # describe "GET #create" do
   #   it "returns http success" do
-  #     get :show
+  #     get :create
   #     expect(response).to have_http_status(:success)
   #   end
   # end
