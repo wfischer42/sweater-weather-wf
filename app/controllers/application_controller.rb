@@ -28,7 +28,7 @@ class ApplicationController < ActionController::API
 
   def validate(*validations)
     validations.each do |validation|
-      send(validation) || render invalid_response(validation))
+      send(validation) || render(invalid_response(validation))
     end
     yield if validations.all? { |validation| send(validation) }
   end
