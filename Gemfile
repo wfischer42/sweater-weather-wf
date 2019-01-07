@@ -18,7 +18,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'fast_jsonapi'
 gem 'faraday'
 gem 'figaro'
-
+gem 'redis-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

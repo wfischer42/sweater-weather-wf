@@ -7,7 +7,7 @@ class Forecast
     @id = id
   end
 
-  def self.for_city_state(location)
+  def self.for_location(location)
     raw_data = DarkskyService.forecast(location)
     self.new(raw_data, location.id)
   end

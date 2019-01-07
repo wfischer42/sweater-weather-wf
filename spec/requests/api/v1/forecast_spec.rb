@@ -5,7 +5,7 @@ RSpec.describe "Api::V1::Forecast", type: :request do
 
     context "With a valid location" do
       before do
-        get '/api/v1/forecast', params: {city: "Denver", state: "CO"}
+        get '/api/v1/forecast', params: { city: "Denver", state: "CO" }
       end
       it "responds with JSON 1.0" do
         expect(response).to be_successful
