@@ -1,34 +1,41 @@
 class GeolocService
   def initialize(city:, state:)
-    @city = city
-    @state = state
+    @location_query = city + "," + state
   end
 
-  def self.coordinates(city:, state:)
+  def self.location_data(city:, state:)
     service = new(city: city, state: state)
-    service.get_coordinates
+    service.get_location_data
   end
 
-  def get_coordinates
+  def get_location_data
     parsed = JSON.parse(response.body, symbolize_names: true)
-    return Hash.new if parsed[:Results].empty?
-
-    coords = parsed[:Results].first.slice(:lat, :lon)
-    coords.map { |key, value| [key, value.to_f] }.to_h
+    location = location_structure(parsed[:resourceSets][0][:resources][0])
+    # An invalid location returns "United States" as the response location
+    # This replaces it with an empty hash
+    (location[:name] == "United States") ? Hash.new : location
   end
 
   private
-  attr_reader :city, :state
+  attr_reader :location_query
+
+  def location_structure(data)
+    location = Hash.new
+    location[:name] = data[:name]
+    location[:lat]  = data[:point][:coordinates][0]
+    location[:lon]  = data[:point][:coordinates][1]
+    return location
+  end
+
   def response
-    @response ||= conn.get('latlon.php') do |req|
-      req.params['location'] = [city, state].join(',')
-    end
+    conn.get('REST/v1/Locations/US/' + location_query)
   end
 
   def conn
-    path = "https://devru-latitude-longitude-find-v1.p.mashape.com/"
+    path = "http://dev.virtualearth.net/"
     Faraday.new(path) do |faraday|
-      faraday.headers['X-Mashape-Key'] = ENV["X_MASHAPE_KEY"]
+      faraday.params['key'] = ENV["BING_MAPS_KEY"]
+      faraday.params['maxResults'] = 1
       faraday.adapter Faraday.default_adapter
     end
   end
