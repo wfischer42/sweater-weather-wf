@@ -1,6 +1,6 @@
 branch-defaults:
   master:
-    environment: $master-sweater-weather-wf
+    environment: master-sweater-weather-wf
 global:
   application_name: master-sweater-weather-wf
   default_ec2_keyname: master-sweater-weather-wf

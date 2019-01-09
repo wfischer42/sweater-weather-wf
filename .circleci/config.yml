@@ -87,7 +87,7 @@ jobs:
 
       - run:
           name: Deploying
-          command: eb deploy $master-sweater-weather-wf
+          command: eb deploy master-sweater-weather-wf
 
 workflows:
   version: 2
