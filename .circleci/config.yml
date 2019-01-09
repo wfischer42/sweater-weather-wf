@@ -71,10 +71,9 @@ jobs:
             - codeclimate.backend.json
 
 
-version: 2
 jobs:
   deploy:
-    working_directory: ~/app
+    working_directory: ~/sweater-weather
     docker:
       - image: circleci/ruby:2.4.3
     steps:
