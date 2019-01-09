@@ -2,8 +2,8 @@ branch-defaults:
   master:
     environment: $master-sweater-weather-wf
 global:
-  application_name: Sweater Weather API
-  default_ec2_keyname: XXXXXX
-  default_platform: Puma with Ruby 2.5 running on 64bit Amazon Linux/2.8.7
+  application_name: master-sweater-weather-wf
+  default_ec2_keyname: master-sweater-weather-wf
+  default_platform: Puma with Ruby 2.4.1 running on 64bit Amazon Linux/2.8.7
   default_region: eu-west-1
   sc: git
