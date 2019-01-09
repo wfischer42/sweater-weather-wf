@@ -17,6 +17,10 @@ class User < ApplicationRecord
     self.favorites << location
   end
 
+  def remove_favorite(location)
+    self.favorites.delete(location)
+  end
+
   private
   def generate_token
     self.token = SecureRandom.uuid.tr('-', '')
