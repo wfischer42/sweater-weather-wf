@@ -69,9 +69,7 @@ jobs:
           paths:
             - cc-test-reporter
             - codeclimate.backend.json
-
-
-jobs:
+            
   deploy:
     working_directory: ~/sweater-weather
     docker:
