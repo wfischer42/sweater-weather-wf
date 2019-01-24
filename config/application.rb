@@ -22,7 +22,7 @@ module SweaterWeather
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'https://wfischer42.github.io/*'
-        resource '/api/*', headers: :any, methods: [:get, :post]
+        resource '*', headers: :any, methods: [:get, :post]
       end
     end
 
