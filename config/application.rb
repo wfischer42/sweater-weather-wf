@@ -24,11 +24,6 @@ module SweaterWeather
         origins 'https://wfischer42.github.io/*'
         resource '/api/*', headers: :any, methods: [:get, :post]
       end
-
-      allow do
-        origins 'http://localhost:8080/'
-        resource '/api/*', headers: :any, methods: [:get, :post]
-      end
     end
 
     # Initialize configuration defaults for originally generated Rails version.
