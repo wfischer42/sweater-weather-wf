@@ -21,7 +21,7 @@ module SweaterWeather
   class Application < Rails::Application
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins 'https://wfischer42.github.io/*'
+        origins 'https://wfischer42.github.io*'
         resource '*', headers: :any, methods: [:get, :post]
       end
     end
