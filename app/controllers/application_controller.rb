@@ -10,7 +10,8 @@ class ApplicationController < ActionController::API
   end
 
   def location_params
-    params.permit(:city, :state)
+    # binding.pry
+    raw_params = params.permit(:location_query)
   end
 
   def failure_messages

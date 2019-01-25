@@ -11,10 +11,13 @@ class Location < ApplicationRecord
   end
 
   def get_location_data(params)
-    location_data = GeolocService.location_data(city:  params[:city],
-                                                state: params[:state])
+    location_query = params[:location_query].delete(' ').downcase
+    location_data = GeolocService.location_data(location_query)
     self.lat  = location_data[:lat]
     self.lon  = location_data[:lon]
     self.name = location_data[:name]
+    self.city = location_data[:city]
+    self.state = location_data[:state]
+    self.country = location_data[:country]
   end
 end
