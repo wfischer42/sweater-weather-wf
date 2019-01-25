@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Api::V1::Gifs", type: :request do
   describe "GET api/v1/gifs", :vcr do
     before do
-      get '/api/v1/gifs', params: { city: "Denver", state: "CO" }
+      get '/api/v1/gifs', params: { location_query: "Denver, CO" }
     end
 
     it "responds with JSON 1.0" do

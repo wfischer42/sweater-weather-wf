@@ -11,12 +11,11 @@ RSpec.describe "Api::V1::Favorites", type: :request do
 
       it "adds a favorite" do
         user = User.last
-        post '/api/v1/favorites', params: { city: "Denver", state: "CO",
+        post '/api/v1/favorites', params: { location_query: "Denver, CO",
                                             api_key: user.token }
 
         expect(response).to have_http_status(204)
-        expect(user.favorites.first).to have_attributes(city: "Denver",
-                                                        state: "CO")
+        expect(user.favorites.first).to have_attributes(location_query: "Denver, CO")
       end
     end
 
@@ -26,8 +25,8 @@ RSpec.describe "Api::V1::Favorites", type: :request do
                                         password:              "bad-password",
                                         password_confirmation: "bad-password" }
 
-        post '/api/v1/favorites', params: { city: "Notacity", state: "Notastate",
-                                           api_key: User.last.token }
+        post '/api/v1/favorites', params: { location_query: "aaoinepuyoaiu",
+                                            api_key: User.last.token }
 
         expect(response).to have_http_status(400)
         expect(json["message"]).to eq("Location was not found.")
@@ -36,7 +35,7 @@ RSpec.describe "Api::V1::Favorites", type: :request do
 
     context "With an invalid token" do
       it "responds with invalid credentials message" do
-        post '/api/v1/favorites', params: { city: "Denver", state: "CO" }
+        post '/api/v1/favorites', params: { location_query: "Denver, CO" }
 
         expect(response).to have_http_status(401)
         expect(json["message"]).to eq("Invalid Credentials")
@@ -102,8 +101,8 @@ RSpec.describe "Api::V1::Favorites", type: :request do
       it "removes the favorite" do
         expect(User.last.favorites[0].city).to eq("Cleveland")
         delete '/api/v1/favorites', params: { api_key: User.last.token,
-                                              City:    "Cleveland",
-                                              State:   "Ohio" }
+                                              city:    "Cleveland",
+                                              state:   "Ohio" }
         expect(response).to have_http_status(204)
         expect(User.last.favorites[0]).to be_nil
       end

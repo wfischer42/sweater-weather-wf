@@ -1,15 +1,18 @@
 class Forecast
   include ForecastFilter
-  attr_reader :id
+  attr_reader :id, :location
 
-  def initialize(raw_data, id)
+  def initialize(raw_data, location)
     @raw_data = raw_data
-    @id = id
+    @id = location.id
+    @location = { city: location.city,
+                  state: location.state,
+                  country: location.country }
   end
 
   def self.for_location(location)
     raw_data = DarkskyService.forecast(location)
-    self.new(raw_data, location.id)
+    self.new(raw_data, location)
   end
 
   def hourly

@@ -5,7 +5,7 @@ RSpec.describe "Api::V1::Forecast", type: :request do
 
     context "With a valid location" do
       before do
-        get '/api/v1/forecast', params: { city: "Denver", state: "CO" }
+        get '/api/v1/forecast', params: { location_query: "80231" }
       end
       it "responds with JSON 1.0" do
         expect(response).to be_successful
@@ -31,7 +31,7 @@ RSpec.describe "Api::V1::Forecast", type: :request do
 
     context "With an invalid location" do
       it "responds with invalid location message" do
-        get '/api/v1/forecast', params: {city: "Notacity", state: "Notastate"}
+        get '/api/v1/forecast', params: {location_query: "akonaskdjfnpjn"}
         expect(json["message"]).to eq("Location was not found.")
       end
     end
