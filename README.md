@@ -2,7 +2,7 @@
 
 
 # README
-[Sweater Weather](https://sweaters-api.herokuapp.com) is a Rails API practice project. It allows users to create accounts, then retrieve weather data for various locations and save their favorite locations. It will eventually be consumed by a front-end weather application.
+Sweater Weather is a Rails API practice project. It allows users to create accounts, then retrieve weather data for various locations and save their favorite locations. It will eventually be consumed by a front-end weather application.
 
 ### Local Setup
 It uses `Ruby 2.4.1` on `Rails 5.2.2`. Fork and clone it, run `bundle`, then spin up the server with `rails s`
