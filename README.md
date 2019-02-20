@@ -13,6 +13,7 @@ Request forecast data for a location:
 https://sweaters-api.herokuapp.com/api/v1/forecast?location_query=denver
 ```
 
+
 ### Built With
 Ruby 2.4.1
 Rails 5.2.2
